@@ -1,0 +1,85 @@
+import java.util.*;
+import java.util.ArrayList;
+
+	public class Practice{
+		
+		static class Student{
+			
+			int id;
+			String name;
+			String course;
+			double grade;
+			
+			Student(int id, String name, String course, double grade){
+				this.id = id;
+				this.name = name;
+				this.course = course;
+				this.grade = grade;
+				
+			}
+			void display() {
+				System.out.println("ID: " + id + "| Name: " + name + "| Course: " + course + "| Grade: " + grade);
+			}
+			
+		}
+		
+		public static void main(String args[] ) {
+			Scanner sc = new Scanner(System.in);
+			ArrayList<Student> students = new ArrayList<>();
+			
+			int choice;
+			
+			do {
+				System.out.println("=== Menu ===");
+				System.out.println("[1] Add Student");
+				System.out.println("[2] Show all student");
+				System.out.println("[3] Exit Program");
+				System.out.println("Choose an option: ");
+				choice = sc.nextInt();
+				sc.nextLine();
+				
+				
+			if(choice == 1) {
+				System.out.println("(Student Details)");
+				System.out.print("Student [ID]: ");
+				int id = sc.nextInt();
+				sc.nextLine();
+				
+				System.out.print("Student [Name]: ");
+				String name = sc.nextLine();
+				
+				System.out.print("Student [Course]: ");
+				String course = sc.nextLine();
+				
+				System.out.print("Student [Grade]: ");
+				double grade = sc.nextDouble();
+				sc.nextLine();
+				
+				Student x = new Student(id, name, course, grade);
+				students.add(x);
+				
+				System.out.println("Student Added!");
+				
+			}else if(choice == 2) {
+				if (students.isEmpty()) {
+					System.out.println("No Students Found!");
+				}else {
+					System.out.println("=== STUDENT LIST ===");
+					for(Student x : students) {
+						x.display();
+						
+					}
+			
+				}
+			}else if(choice == 3) {
+				System.out.println("Program ended.");
+				
+			}else {
+				System.out.println("Invalid choice, please try again");
+			}
+			}while(choice != 3);
+			
+			sc.close();
+		}
+	}
+	
