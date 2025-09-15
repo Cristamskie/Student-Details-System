@@ -1,0 +1,63 @@
+import java.util.*;
+import java.util.ArrayList;
+
+public class Practice{
+	
+	static class Food{
+		
+		String name;
+		String recipe;
+	
+		Food(String name, String recipe){
+			this.name = name;
+			this.recipe = recipe;
+			
+		}
+	
+	}
+	
+			void displayInfo() {
+				System.out.print(" ");
+		
+	}
+	
+					public static void main(String [] args) {
+						Scanner sc = new Scanner(System.in);
+						ArrayList<Food> foods = new ArrayList<>();
+						
+						foods.add(new Food("Fried Chicken", "Flour, cornstarch, pepper, paprika, and spices"));
+						foods.add(new Food("Omelette Egg", "fresh egg, tomatoes, white onion, onion leaves, salt and pepper"));
+						foods.add(new Food("Adobo", "Chicken, soy sauce, vinegar, garlic, bay leaves"));
+						
+						System.out.println("===== FOOD RECIPE =====");
+						
+						String input = "";
+						
+						while(!input.equalsIgnoreCase("exit")) {
+							System.out.print("\nEnter a food name(or type exit to close the program): ");
+							input = sc.nextLine().toLowerCase();
+							
+							if(input.equals("exit")) {
+								break;
+							}
+							boolean found = false;
+							
+							for(Food x : foods) {
+								if(x.name.equalsIgnoreCase(input)) {
+									System.out.println("Recipe for " + x.name + ": " + x.recipe + "\n");
+									found = true;
+									break;
+								}
+							}
+							
+							if(!found) {
+								System.out.print("Recipe not found!");
+							}
+						}
+						System.out.print("Program Ended.");
+						sc.close();
+
+
+	}
+}
+
