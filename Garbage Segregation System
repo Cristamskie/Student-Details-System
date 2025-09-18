@@ -1,0 +1,87 @@
+import java.util.Scanner;
+import java.util.ArrayList;
+
+	public class Student{
+		
+		static class Garbage{
+			String type;
+			String name;
+			String day;
+			String waste;
+			
+			Garbage(String type, String name, String day, String waste){
+				this.type = type;
+				this.name = name;
+				this.day  = day;
+				this.waste = waste;
+			
+			}
+		}
+		
+		public static void main(String[] args) {
+			
+			ArrayList<Garbage> data = new ArrayList<>();
+			Scanner sc = new Scanner(System.in);
+			boolean running = true;
+			
+			while(running) {
+				System.out.println("<========= GARBAGE SYSTEM ==========>");
+				System.out.println("( [1]Input Trash || [2]View all trashes || [3] Exit )");
+				System.out.println("Enter a number:");
+				int choice = sc.nextInt();
+				sc.nextLine();
+				
+				switch(choice) {
+				
+				case 1:
+					System.out.println("Trash name: ");
+					String name = sc.nextLine();
+					
+					System.out.println("Type of waste [Human Waste || Food Waste]");
+					String waste = sc.nextLine();
+
+					System.out.println("<===== GARBAGE TYPE =====>");
+					System.out.println("Biodegradable || Non-biodegradable || Hazardous || Recyclable ");
+					System.out.println("Type: ");
+					String type = sc.nextLine();
+					
+					System.out.println("Day[Monday to Sunday]: ");
+					String day = sc.nextLine();
+
+					data.add(new Garbage(type, name, day, waste));
+					System.out.println("Added:  " + name + "\nWaste: " 
+									+ waste + "\nType:" + type + "\nDay: "+ day);
+					break;
+				case 2:
+					if(data.isEmpty()) {
+						System.out.println("No trash items");
+
+					}else {
+						System.out.println("(ALL TRASHES)");
+							for(int i = 0 ; i < data.size(); i++) {
+								Garbage item = data.get(i);
+							
+								System.out.println((i + 1) + ". Name: " + item.name +
+		                                " | Waste: " + item.waste +
+		                                " | Type: " + item.type +
+		                                " | Day: " + item.day);
+									
+							}
+							System.out.println();
+							break;
+							}
+								
+					
+				case 3:
+					running = false;
+					System.out.println("Program Ended!");
+					break;
+					
+					default:
+					System.out.println("Invalid Option!");
+
+			}
+		}
+			
+		}
+	}
